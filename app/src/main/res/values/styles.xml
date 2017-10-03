@@ -8,4 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ColorTitulo">
+        <item name="android:textColor">#ff1f93</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FondoApp">
+        <item name="android:background">#211fff</item>
+    </style>
+
+    <style name="FondoCyanBoton">
+        <item name="android:background">#f500aff4</item>
+        <item name="android:shape">rectangle</item>
+        <item name="android:radius">50dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
