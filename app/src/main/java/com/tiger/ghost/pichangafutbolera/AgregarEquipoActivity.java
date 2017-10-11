@@ -56,6 +56,7 @@ public class AgregarEquipoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 guardarClub();
+                editTextNombreClub.setText("");
             }
         });
 

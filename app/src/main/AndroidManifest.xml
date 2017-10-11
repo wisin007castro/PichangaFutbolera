@@ -9,16 +9,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".Inicio" />
-        <activity android:name=".NuevaCopa">
+        <activity android:name=".Inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".NuevaCopa"></activity>
         <activity android:name=".NuevoTorneo" />
-        <activity android:name=".AgregarEquipoActivity"></activity>
+        <activity android:name=".AgregarEquipoActivity">
+
+        </activity>
     </application>
 
 </manifest>

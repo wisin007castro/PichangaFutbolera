@@ -25,7 +25,10 @@
             android:typeface="normal"
             android:fontFamily="sans-serif-smallcaps"
             android:textAlignment="center"
-            style="@style/ColorTitulo"/>
+            style="@style/ColorTitulo"
+            android:textColor="@android:color/background_dark"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -38,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"
                 android:layout_weight="1"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="normal|bold" />
 
             <EditText
@@ -98,13 +101,6 @@
                 android:layout_weight="1"
                 style="@style/FondoCyanBoton" />
 
-            <Button
-                android:text="Cancelar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/buttonCancelar"
-                android:layout_weight="1"
-                style="@style/FondoCyanBoton" />
         </LinearLayout>
 
         <ListView

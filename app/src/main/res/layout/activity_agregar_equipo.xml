@@ -22,7 +22,10 @@
             android:id="@+id/textView7"
             style="@style/ColorTitulo"
             android:textAlignment="center"
-            android:fontFamily="sans-serif-smallcaps" />
+            android:fontFamily="sans-serif-smallcaps"
+            android:textColor="@android:color/background_dark"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
 
         <TextView
             android:text="TextView"
@@ -42,8 +45,7 @@
             android:id="@+id/editTextClub"
             android:hint="Nombre de Equipo"
             android:textSize="18sp"
-            android:textStyle="normal|bold"
-            android:textAlignment="textStart" />
+            android:textStyle="normal|bold" />
 
         <ListView
             android:layout_width="match_parent"
@@ -67,14 +69,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonAgregar"
-            android:layout_weight="1"
-            style="@style/FondoCyanBoton"/>
-
-        <Button
-            android:text="Cancelar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonCancelar"
             android:layout_weight="1"
             style="@style/FondoCyanBoton"/>
 

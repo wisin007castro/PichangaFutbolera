@@ -79,7 +79,7 @@ public class NuevaCopa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 agregarTorneo();
-
+                nombreTorneo.setText("");
             }
         });
 
