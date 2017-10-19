@@ -16,12 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".NuevaCopa"></activity>
+        <activity android:name=".NuevaCopa" />
         <activity android:name=".NuevoTorneo" />
-        <activity android:name=".AgregarEquipoActivity">
-
-        </activity>
+        <activity android:name=".AgregarEquipoActivity" />
+        <activity android:name=".ModificarEquipoActivity" />
+        <activity android:name=".ModificarTorneoActivity"></activity>
     </application>
 
 </manifest>
