@@ -29,6 +29,7 @@ dependencies {
     compile 'com.google.firebase:firebase-core:10.2.6'
     compile 'com.google.firebase:firebase-database:10.2.6'
     compile 'com.google.firebase:firebase-auth:10.2.6'
+    compile 'com.google.firebase:firebase-storage:10.2.6'
 }
 //apply del servicio de google
 apply plugin: 'com.google.gms.google-services'

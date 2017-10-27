@@ -45,6 +45,15 @@
             android:text="Modificar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonModificaEquipo" />
+            android:id="@+id/buttonModificaClub"
+            style="@style/FondoCyanBoton" />
+
+        <Button
+            android:text="Eliminar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEliminarClub"
+            style="@style/FondoCyanBoton"
+            android:layout_marginTop="20dp" />
     </LinearLayout>
 </RelativeLayout>

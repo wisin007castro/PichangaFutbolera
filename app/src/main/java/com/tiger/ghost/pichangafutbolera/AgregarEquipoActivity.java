@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,6 +24,8 @@ import java.util.List;
 
 public class AgregarEquipoActivity extends AppCompatActivity {
 
+    String idTorneo;
+    String nombre;
     TextView textViewNombreTorneo;
     EditText editTextNombreClub;
     Button buttonAgregarClub;
@@ -44,15 +47,16 @@ public class AgregarEquipoActivity extends AppCompatActivity {
         buttonAgregarClub = (Button) findViewById(R.id.buttonAgregar);
         buttonModElimTorneo = (Button) findViewById(R.id.btnModElimTorneo);
 
-        Intent intent = getIntent();
-
         listaClub = new ArrayList<>();
 
-        final String id = intent.getStringExtra(NuevaCopa.ID_TORNEO);
-        final String nombre = intent.getStringExtra(NuevaCopa.NOMBRE_TORNEO);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            idTorneo = bundle.getString("IdTorneo");
+            nombre = bundle.getString("NombreTorneo");
+        }
 
         textViewNombreTorneo.setText(nombre);
-        databaseClubs = FirebaseDatabase.getInstance().getReference("clubes").child(id);
+        databaseClubs = FirebaseDatabase.getInstance().getReference("clubes").child(idTorneo);
 
         buttonAgregarClub.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +72,26 @@ public class AgregarEquipoActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(getApplicationContext(), ModificarTorneoActivity.class);
 
                 intent1.putExtra("nombreTorneo", nombre);
-                intent1.putExtra("IDTorneo", id);
+                intent1.putExtra("IDTorneo", idTorneo);
 
                 startActivity(intent1);
+            }
+        });
+
+        listViewClubs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Club club = listaClub.get(position);
+
+                Intent intentClub = new Intent(getApplicationContext(), ModificarEquipoActivity.class);
+
+                intentClub.putExtra("IdTorneo", idTorneo);
+                intentClub.putExtra("NombreTorneo", nombre);
+                intentClub.putExtra("nombreClub", club.getNombreclub());
+                intentClub.putExtra("IdClub", club.getIdClub());
+                intentClub.putExtra("puntosClub", club.getPuntos());
+
+                startActivity(intentClub);
             }
         });
 
@@ -88,7 +109,6 @@ public class AgregarEquipoActivity extends AppCompatActivity {
                     Club club = clubSnapshot.getValue(Club.class);
                     listaClub.add(club);
                 }
-
                 ListaClubes clubesListAdapter = new ListaClubes(AgregarEquipoActivity.this, listaClub);
                 listViewClubs.setAdapter(clubesListAdapter);
             }
@@ -103,11 +123,12 @@ public class AgregarEquipoActivity extends AppCompatActivity {
     private void guardarClub(){
         int puntos = 0;
         String nombreClub = editTextNombreClub.getText().toString().trim();
+        String ruta = "";
 
         if(!TextUtils.isEmpty(nombreClub)){
             String id = databaseClubs.push().getKey();
 
-            Club club = new Club(id, nombreClub, puntos);
+            Club club = new Club(id, nombreClub, puntos, ruta);
             databaseClubs.child(id).setValue(club);
 
             Toast.makeText(this, "Agregado Correctamente", Toast.LENGTH_SHORT).show();

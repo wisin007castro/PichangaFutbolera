@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.tiger.ghost.pichangafutbolera.Objetos.Torneo;
 
 import java.util.ArrayList;
@@ -26,8 +29,8 @@ import java.util.List;
 
 public class NuevaCopa extends AppCompatActivity {
 
-    public static final String NOMBRE_TORNEO = "nombretorneo";
-    public static final String ID_TORNEO = "idtorneo";
+//    public static final String NOMBRE_TORNEO = "nombretorneo";
+//    public static final String ID_TORNEO = "idtorneo";
 
     private TextView text;
     private EditText nombreTorneo;
@@ -90,13 +93,12 @@ public class NuevaCopa extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), AgregarEquipoActivity.class);
 
-                intent.putExtra(ID_TORNEO, torneo.getTorneoId());
-                intent.putExtra(NOMBRE_TORNEO, torneo.getNombreTorneo());
+                intent.putExtra("IdTorneo", torneo.getTorneoId());
+                intent.putExtra("NombreTorneo", torneo.getNombreTorneo());
 
                 startActivity(intent);
             }
         });
-
 
     }
 
@@ -129,12 +131,12 @@ public class NuevaCopa extends AppCompatActivity {
     private void agregarTorneo(){
         String nombre = nombreTorneo.getText().toString().trim();
         String nEquipos = Integer.toString(numero);
-
+        String ruta = "";
         if(!TextUtils.isEmpty(nombre)){
 
             String id = databaseTorneos.push().getKey();
 
-            Torneo torneo = new Torneo(id, nEquipos, nombre);
+            Torneo torneo = new Torneo(id, nEquipos, nombre, ruta);
             databaseTorneos.child(id).setValue(torneo);
             Toast.makeText(NuevaCopa.this, "Nombre: "+nombre+" ,Numero de equipos:"+nEquipos, Toast.LENGTH_SHORT).show();
         }else{

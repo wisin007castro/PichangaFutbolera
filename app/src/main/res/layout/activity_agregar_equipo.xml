@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_agregar_equipo"
     android:layout_width="match_parent"
@@ -13,7 +14,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <TextView
             android:text="TextView"
@@ -23,15 +25,17 @@
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="24sp"
             android:textStyle="normal|bold"
-            android:textColor="@android:color/holo_blue_dark" />
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_weight="0.57" />
 
         <Button
             android:id="@+id/btnModElimTorneo"
-            android:background="@drawable/editicon"
+            android:background="@drawable/setting"
             android:layout_height="45dp"
             android:layout_width="45dp"
             android:elevation="0dp"
-            android:paddingRight="50dp" />
+            android:paddingRight="10dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -40,6 +44,13 @@
         android:orientation="vertical"
         android:paddingTop="50dp"
         android:weightSum="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/divisor"
+            android:id="@+id/imageView6"
+            android:layout_weight="0.57" />
 
         <TextView
             android:text="Agregar Equipo"
@@ -74,6 +85,13 @@
             android:layout_weight="1"
             style="@style/FondoCyanBoton"/>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/divisor"
+            android:id="@+id/imageView5"
+            android:layout_weight="0.57" />
+
         <TextView
             android:text="Lista de Equipos"
             android:layout_width="match_parent"
@@ -84,7 +102,7 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="294dp"
+            android:layout_height="220dp"
             android:id="@+id/listViewClubes" />
 
     </LinearLayout>
